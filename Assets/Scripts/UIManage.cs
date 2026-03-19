@@ -35,7 +35,7 @@ public class UIManage : MonoBehaviour
     public void PauseGame()
     {
         gamePaused = true;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         camera.GetComponent<CameraController>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -49,6 +49,6 @@ public class UIManage : MonoBehaviour
         Cursor.visible = false;
         gamePaused = false;
         UI.SetActive(false);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 }

@@ -32,6 +32,7 @@ public class MenuManager : MonoBehaviour
         BackButton.SetActive(true);
         ControlsButton.SetActive(false);
         CreditText.SetActive(true);
+        SettingsButton.SetActive(false);
     }
 
     public void Controls()
@@ -53,8 +54,9 @@ public class MenuManager : MonoBehaviour
         CreditsButton.SetActive(true);
         BackButton.SetActive(false);
         CreditText.SetActive(false);
-        ControlsButton.SetActive(true);
+        ControlsButton.SetActive(false);
         ControlsText.SetActive(false);
+        SettingsButton.SetActive(true);
     }
 
     public void QuitGame()

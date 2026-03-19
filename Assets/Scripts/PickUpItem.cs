@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
 public class PickUpItem : MonoBehaviour
 {
     private Transform PickUpPoint;
@@ -13,6 +14,11 @@ public class PickUpItem : MonoBehaviour
    // public Slider ThrowForce;
     public Image radialIndicator;
     public GameObject PickupText;
+    public Gradient ForceGradient;
+    private float maxSpeed;
+    private float speed;
+    public float duration;
+    float t = 0f;
 
     public bool readyToThrow;
     public bool itemIsPicked;
@@ -29,10 +35,40 @@ public class PickUpItem : MonoBehaviour
         PickupText.SetActive(false);
     }
 
+
     public void SliderChange()
     {
        // ThrowForce.value = forceMulti;
         radialIndicator.fillAmount = forceMulti / 1000;
+        speed = forceMulti / 1000;
+        if (radialIndicator.fillAmount > .5f)
+        {
+            float value = Mathf.Lerp(0, 1, t);
+            t += Time.deltaTime / duration;
+            Color color = ForceGradient.Evaluate(value);
+            //Mathf.Lerp(Color.white, Color.red, 1f);
+            // radialIndicator.color = ForceGradient.Evaluate(Mathf.Lerp(speed,100,1));
+            radialIndicator.color = color;
+        } else if( radialIndicator.fillAmount < .5f)
+        {
+            float value = 0;
+            Color color = ForceGradient.Evaluate(value);
+            radialIndicator.color = color;
+        }
+        //} else
+        //{
+        //    radialIndicator.color = Color.white;
+        //    float value = Mathf.Lerp(0, 0, 0);
+        //    Color color = ForceGradient.Evaluate(value);
+        //    t += Time.deltaTime / duration;
+        //    ForceGradient.Evaluate(value);
+        //    radialIndicator.color = color;
+        //}
+    }
+
+    Color GetColorFromSpeed(float speed)
+    {
+        return ForceGradient.Evaluate(Mathf.Min(speed / maxSpeed, 1));
     }
     // Update is called once per frame
     void Update()
@@ -79,6 +115,7 @@ public class PickUpItem : MonoBehaviour
             readyToThrow = true;
             if(forceMulti > 10)
             {
+
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 rb.AddForce(camera.transform.forward * forceMulti);
                 this.transform.parent = null;
