@@ -19,14 +19,20 @@ public class SettingsManager : MonoBehaviour
     public GameObject GraphicsPage;
     public GameObject AudioPage;
 
+    [Header("Title")]
+    public GameObject Title;
+
+
 
     public void ExitMenu()
     {
+        //Title.SetActive(true);
         SettingsPage.SetActive(false);
         AudioPage.SetActive(false);
         ControlsPage.SetActive(false);
         CameraPage.SetActive(false);
         GraphicsPage.SetActive(false);
+
     }
 
 

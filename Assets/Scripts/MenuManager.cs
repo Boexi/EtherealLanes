@@ -13,6 +13,8 @@ public class MenuManager : MonoBehaviour
     public GameObject SettingsButton;
     public GameObject SettingsPage;
 
+
+
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
@@ -21,6 +23,7 @@ public class MenuManager : MonoBehaviour
     public void OpenSettings()
     {
         SettingsPage.SetActive(true);
+        //Title.SetActive(false);
     }
 
     public void Credits()
@@ -58,6 +61,7 @@ public class MenuManager : MonoBehaviour
         ControlsText.SetActive(false);
         SettingsButton.SetActive(true);
     }
+
 
     public void QuitGame()
     {

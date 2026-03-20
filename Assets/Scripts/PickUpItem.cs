@@ -52,7 +52,7 @@ public class PickUpItem : MonoBehaviour
         } else if( radialIndicator.fillAmount < .5f)
         {
             float value = 0;
-            Color color = ForceGradient.Evaluate(value);
+            Color color = ForceGradient.Evaluate(0);
             radialIndicator.color = color;
         }
         //} else
