@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 6094446066712817525}
   - component: {fileID: 3647735914233326227}
   m_Layer: 0
-  m_Name: Player
+  m_Name: skibidi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,6 +254,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31fc2e3f4b344b9499cc9692024cdc90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSetup: 0
+  _prefabId: -2147483648
+  _componentIndex: -2147483648
+  _shouldBePooled: 0
+  _parent: {fileID: 0}
+  _invertedPathToNearestParent: 
+  _directChildren: []
+  _networkRules: {fileID: 0}
+  _visitiblityRules: {fileID: 0}
   Player: {fileID: 4688993305823361666}
   cam: {fileID: 3932313804645729598}
   rb: {fileID: 3647735914233326227}

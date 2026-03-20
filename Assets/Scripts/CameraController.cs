@@ -1,11 +1,20 @@
 using UnityEngine;
+using PurrNet;
 
-public class CameraController : MonoBehaviour
+public class CameraController : NetworkBehaviour
 {
     public float sensitivity = 2f;
     private float xRotation = 0f;
 
 
+    protected override void OnSpawned()
+    {
+        base.OnSpawned();
+        if (!isOwner)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

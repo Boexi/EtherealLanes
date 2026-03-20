@@ -22,7 +22,12 @@ public class PlayerMovement : NetworkBehaviour
     [Header("Booleans")]
     public bool isGrounded;
 
+    protected override void OnSpawned()
+    {
+        base.OnSpawned();
 
+        enabled = isOwner;
+    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
