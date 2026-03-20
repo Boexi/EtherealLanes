@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public GameObject ControlsButton;
     public GameObject SettingsButton;
     public GameObject SettingsPage;
+    public GameObject MultiButon;
 
 
 
@@ -31,6 +32,7 @@ public class MenuManager : MonoBehaviour
         StartButton.SetActive(false);
         CloseButton.SetActive(false);
         Title.SetActive(false);
+        MultiButon.SetActive(false);
         CreditsButton.SetActive(false);
         BackButton.SetActive(true);
         ControlsButton.SetActive(false);
@@ -60,6 +62,7 @@ public class MenuManager : MonoBehaviour
         ControlsButton.SetActive(false);
         ControlsText.SetActive(false);
         SettingsButton.SetActive(true);
+        MultiButon.SetActive(true);
     }
 
 
