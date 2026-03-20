@@ -1,5 +1,5 @@
 using UnityEngine;
-using Unity.Netcode;
+using PurrNet;
 
 public class PlayerMovement : NetworkBehaviour
 {
@@ -22,14 +22,7 @@ public class PlayerMovement : NetworkBehaviour
     [Header("Booleans")]
     public bool isGrounded;
 
-    public override void OnNetworkSpawn()
-    {
-        if (!IsOwner)
-        {
-            enabled = false;
-            return;
-        }
-    }
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
