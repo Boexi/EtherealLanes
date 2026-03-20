@@ -15,8 +15,8 @@ public class PickUpItem : MonoBehaviour
     public Image radialIndicator;
     public GameObject PickupText;
     public Gradient ForceGradient;
-    private float maxSpeed;
-    private float speed;
+    public float maxSpeed;
+    public float speed;
     public float duration;
     float t = 0f;
 
@@ -41,20 +41,18 @@ public class PickUpItem : MonoBehaviour
        // ThrowForce.value = forceMulti;
         radialIndicator.fillAmount = forceMulti / 1000;
         speed = forceMulti / 1000;
-        if (radialIndicator.fillAmount > .5f)
-        {
-            float value = Mathf.Lerp(0, 1, t);
-            t += Time.deltaTime / duration;
-            Color color = ForceGradient.Evaluate(value);
-            //Mathf.Lerp(Color.white, Color.red, 1f);
-            // radialIndicator.color = ForceGradient.Evaluate(Mathf.Lerp(speed,100,1));
-            radialIndicator.color = color;
-        } else if( radialIndicator.fillAmount < .5f)
-        {
-            float value = 0;
-            Color color = ForceGradient.Evaluate(0);
-            radialIndicator.color = color;
-        }
+
+        float value = Mathf.Lerp(0, 1, t);
+        t += Time.deltaTime / duration;
+        Color color = ForceGradient.Evaluate(value);
+
+        if (t >= 1) t = 1;
+
+        Debug.Log(t);
+
+        //Mathf.Lerp(Color.white, Color.red, 1f);
+        // radialIndicator.color = ForceGradient.Evaluate(Mathf.Lerp(speed,100,1));
+        radialIndicator.color = color;
         //} else
         //{
         //    radialIndicator.color = Color.white;
@@ -73,10 +71,10 @@ public class PickUpItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SliderChange();
-
         if(Input.GetKey(KeyCode.E) && itemIsPicked == true && readyToThrow)
         {
+            SliderChange();
+            radialIndicator.gameObject.SetActive(true);
             forceMulti += 300 * Time.deltaTime;
             forceMulti = Mathf.Clamp(forceMulti, 0, 1000);
         }
@@ -124,6 +122,11 @@ public class PickUpItem : MonoBehaviour
                 itemIsPicked = false;
                 forceMulti = 0;
                 readyToThrow = false;
+
+                // Hide yo thing 
+                radialIndicator.gameObject.SetActive(false);
+
+                t = 0;
             }
 
             forceMulti = 0;
